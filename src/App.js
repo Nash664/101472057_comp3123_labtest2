@@ -6,6 +6,12 @@ import SearchBar from './components/SearchBar';
 const API_KEY = process.env.REACT_APP_API_KEY || '';
 const DEFAULT_CITY = 'Toronto';
 
+// Debug: Log environment variable status
+console.log('Environment check:');
+console.log('REACT_APP_API_KEY exists:', !!process.env.REACT_APP_API_KEY);
+console.log('API_KEY value:', API_KEY ? `${API_KEY.substring(0, 10)}...` : 'EMPTY');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
