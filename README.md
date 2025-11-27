@@ -58,12 +58,24 @@ This application uses the **OpenWeatherMap API** to fetch real-time weather data
    npm install
    ```
 
-3. **Start the development server**
+3. **Set up environment variables**
+   - Copy the example environment file:
+     ```bash
+     cp .env.example .env
+     ```
+   - Open `.env` and add your OpenWeatherMap API key:
+     ```
+     REACT_APP_API_KEY=your_api_key_here
+     ```
+   - Get your API key from [OpenWeatherMap](https://openweathermap.org/api)
+   - **Important**: The `.env` file is already in `.gitignore` and will not be committed to GitHub
+
+4. **Start the development server**
    ```bash
    npm start
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    - The app will automatically open at `http://localhost:3000`
    - If it doesn't, manually navigate to the URL
 
