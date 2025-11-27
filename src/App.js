@@ -3,7 +3,7 @@ import './App.css';
 import WeatherDisplay from './components/WeatherDisplay';
 import SearchBar from './components/SearchBar';
 
-const API_KEY = 'dbd03d9c8496caabacd549536fe9aafa';
+const API_KEY = process.env.REACT_APP_API_KEY || '';
 const DEFAULT_CITY = 'Toronto';
 
 function App() {
@@ -19,6 +19,10 @@ function App() {
       setError(null);
       
       try {
+        if (!API_KEY) {
+          throw new Error('API key is missing. Please set REACT_APP_API_KEY in your .env file.');
+        }
+        
         // Encode city name to handle spaces and special characters
         const encodedCity = encodeURIComponent(city);
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${API_KEY}&units=metric`;
