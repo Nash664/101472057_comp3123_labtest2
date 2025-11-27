@@ -6,8 +6,19 @@ function SearchBar({ onSearch, loading }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.trim() && !loading) {
-      onSearch(inputValue);
+    performSearch();
+  };
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    performSearch();
+  };
+
+  const performSearch = () => {
+    const trimmedValue = inputValue.trim();
+    if (trimmedValue && !loading) {
+      console.log('Searching for city:', trimmedValue);
+      onSearch(trimmedValue);
       setInputValue('');
     }
   };
@@ -27,8 +38,9 @@ function SearchBar({ onSearch, loading }) {
         disabled={loading}
       />
       <button 
-        type="submit" 
+        type="button" 
         className="search-button"
+        onClick={handleButtonClick}
         disabled={loading || !inputValue.trim()}
       >
         {loading ? '⏳' : '🔍'}

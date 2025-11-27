@@ -19,30 +19,45 @@ function App() {
       setError(null);
       
       try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-        );
+        // Encode city name to handle spaces and special characters
+        const encodedCity = encodeURIComponent(city);
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${API_KEY}&units=metric`;
+        
+        const response = await fetch(url);
+        const data = await response.json();
         
         if (!response.ok) {
-          throw new Error('City not found. Please try another city name.');
+          // Check for specific API key error
+          if (response.status === 401 || data.cod === 401) {
+            throw new Error('Invalid API key. Please check your OpenWeatherMap API key. Make sure it is activated at https://openweathermap.org/api');
+          }
+          // Check for city not found error
+          if (response.status === 404 || data.cod === '404') {
+            throw new Error('City not found. Please try another city name.');
+          }
+          throw new Error(data.message || 'Failed to fetch weather data. Please try again.');
         }
         
-        const data = await response.json();
         setWeatherData(data);
       } catch (err) {
-        setError(err.message);
+        console.error('Error fetching weather:', err);
+        setError(err.message || 'Failed to fetch weather data. Please try again.');
         setWeatherData(null);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchWeather();
+    if (city) {
+      fetchWeather();
+    }
   }, [city]);
 
   const handleSearch = (searchCity) => {
-    if (searchCity.trim()) {
-      setCity(searchCity.trim());
+    const trimmedCity = searchCity.trim();
+    if (trimmedCity) {
+      console.log('Setting city to:', trimmedCity);
+      setCity(trimmedCity);
     }
   };
 

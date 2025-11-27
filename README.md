@@ -4,9 +4,9 @@ A simple, user-friendly React application that displays current weather informat
 
 ## Project Information
 
-- **Project Name**: 101472057_comp3123_labtest2
+- **Project Name**: Weather app
 - **Student ID**: 101472057
-- **Course**: COMP3123 Lab Test 2
+- **Course**: COMP3123 
 
 ## Features
 
@@ -22,7 +22,6 @@ This application uses the **OpenWeatherMap API** to fetch real-time weather data
 
 - **API Provider**: OpenWeatherMap (https://openweathermap.org/)
 - **Endpoint**: Current Weather Data API
-- **API Key**: Included in the application (dbd03d9c8496caabacd549536fe9aafa)
 - **Documentation**: 
   - https://openweathermap.org/forecast16
   - https://openweathermap.org/weather-conditions
@@ -117,19 +116,6 @@ This creates an optimized production build in the `build` folder.
    - Atmospheric pressure
    - Visibility distance
 
-## Screenshots
-
-### Desktop View
-![Desktop View](screenshots/desktop-view.png)
-
-### Mobile View
-![Mobile View](screenshots/mobile-view.png)
-
-### Weather Display
-![Weather Display](screenshots/weather-display.png)
-
-*Note: Screenshots should be added to the `screenshots/` folder in the repository*
-
 ## Technologies Used
 
 - **React 18.2.0**: UI library
@@ -137,31 +123,6 @@ This creates an optimized production build in the `build` folder.
 - **OpenWeatherMap API**: Weather data source
 - **CSS3**: Styling with modern features (gradients, animations, flexbox, grid)
 - **Google Fonts (Poppins)**: Typography
-
-## Deployment
-
-This application can be deployed to:
-- **Vercel**: Connect your GitHub repository for automatic deployments
-- **Railway**: Deploy with minimal configuration
-- **Render**: Free hosting for React applications
-
-### Vercel Deployment Steps
-
-1. Push your code to GitHub
-2. Visit [Vercel](https://vercel.com)
-3. Import your GitHub repository
-4. Configure build settings:
-   - Build Command: `npm run build`
-   - Output Directory: `build`
-5. Deploy!
-
-## Notes and Assumptions
-
-- The API key is included in the source code for demonstration purposes. In a production environment, it should be stored in environment variables.
-- Temperature is displayed in Celsius (°C) as specified by the `units=metric` parameter in the API call.
-- The app handles errors gracefully, showing user-friendly error messages when a city is not found.
-- Weather icons are fetched directly from OpenWeatherMap's CDN.
-- The app uses a default city (Toronto) on initial load to provide immediate weather information.
 
 ## Future Enhancements (Optional)
 
@@ -172,12 +133,3 @@ This application can be deployed to:
 - [ ] Temperature unit conversion (Celsius/Fahrenheit)
 - [ ] Geolocation-based weather
 - [ ] Weather maps integration
-
-## License
-
-This project is created for educational purposes as part of COMP3123 Lab Test 2.
-
-## Author
-
-Student ID: 101472057
-
